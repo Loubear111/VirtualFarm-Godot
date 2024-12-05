@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://jjc1temmmi73"]
+
+[ext_resource type="Script" path="res://scripts/crop_scene.gd" id="1_hiab7"]
+[ext_resource type="Texture2D" uid="uid://dbg2gsxy102ki" path="res://assets/crops.png" id="1_of0rr"]
+[ext_resource type="Script" path="res://scripts/crop_tilemap.gd" id="3_crp1j"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p8sic"]
+texture = ExtResource("1_of0rr")
+texture_region_size = Vector2i(64, 32)
+0:1/0 = 0
+0:1/0/custom_data_0 = "dirt"
+0:1/0/custom_data_1 = "plantable"
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+0:3/0/custom_data_0 = "carrot"
+1:3/0 = 0
+1:3/0/custom_data_0 = "carrot"
+2:3/0 = 0
+2:3/0/custom_data_0 = "carrot"
+3:3/0 = 0
+3:3/0/custom_data_0 = "carrot"
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ot8tp"]
+tile_shape = 1
+tile_size = Vector2i(64, 32)
+custom_data_layer_0/name = "type"
+custom_data_layer_0/type = 4
+custom_data_layer_1/name = "state"
+custom_data_layer_1/type = 4
+sources/0 = SubResource("TileSetAtlasSource_p8sic")
+
+[node name="CropScene" type="Node2D" node_paths=PackedStringArray("crop_map")]
+script = ExtResource("1_hiab7")
+crop_map = NodePath("CropsTilemap")
+
+[node name="CropsTilemap" type="TileMapLayer" parent="."]
+position = Vector2(32, 0)
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0)
+tile_set = SubResource("TileSet_ot8tp")
+script = ExtResource("3_crp1j")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -46.0
+offset_top = -15.0
+offset_right = -2.0
+offset_bottom = 16.0
+text = "Edit"
