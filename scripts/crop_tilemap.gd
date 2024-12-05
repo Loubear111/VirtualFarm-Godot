@@ -15,5 +15,6 @@ func handle_click(eventPos: Vector2i):
     var localPos = self.to_local(eventPos)
     var mapPos = self.local_to_map(localPos)
     var data = self.get_cell_tile_data(mapPos)
+    # Storing crop state date in the tilemap... This is slightly SUS but OK for now
     if data != null and data.get_custom_data("state") == "plantable":
         self.set_cell(mapPos, 0, Vector2i(0,3))
